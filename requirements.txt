@@ -1,2 +1,6 @@
 ipykernel
 python-dotenv
+json
+glob
+os
+pandas
