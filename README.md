@@ -1,79 +1,143 @@
-# Data Project Template
 
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
+# 📰 Fake News Detection using NLP and Machine Learning
 
-## Cookiecutter Data Science
-This project template is a simplified version of the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) template, created to suit the needs of Datalumina and made available as a GitHub template.
+![Status](https://img.shields.io/badge/Stage-Model%20Development-blue)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-## Adjusting .gitignore
+## 📍 Live Demo
 
-Ensure you adjust the `.gitignore` file according to your project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exlucded from source control:
+🔗 Try it here: [https://fakenewsdetect-yhif.onrender.com](https://fakenewsdetect-yhif.onrender.com)
 
-```plaintext
-# exclude data from source control by default
-# /data/
+---
+
+## 📌 Project Overview
+
+This capstone project focuses on **detecting fake news** using Natural Language Processing (NLP) and classical machine learning algorithms. With the rise of misinformation online, this project aims to provide an automated pipeline that identifies whether a news article is **real or fake**. Compared Classical Machine Learning models, Deep Learning models and Transormer based models.
+
+The final deployed model uses **Support Vector Machine (SVM)** based on its superior accuracy and F1 score across all models tested.
+The selected model is exported and deployed separately via Flask in the [FakeNewsDetect](https://github.com/NeuroRaptor/FakeNewsDetect).
+
+---
+
+## 🎯 Objective
+
+- Preprocess and analyze news data using NLP.
+- Compare different ML and DL models for classification.
+- Deploy the best model (SVM) using a Flask app.
+- Build a user-friendly interface for public testing.
+
+---
+
+## 🗂️ Repository Structure
+
+```
+📦 Fake-News-Detection/
+├── data/              # Raw and cleaned datasets
+├── models/            # Trained and exported models (e.g., .pkl, .joblib)
+├── notebooks/         # Jupyter notebooks for Pre-processing, EDA and training
+├── references/        # Research papers or reference materials
+├── reports/           # Visualizations, performance results
+├── venv/              # Virtual environment (optional/local)
+├── .gitignore         # Files to exclude from Git
+├── LICENSE            # Project license (MIT)
+├── README.md          # This file
+└── requirements.txt   # Python dependencies
 ```
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+---
 
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+## 📊 Model Performance
 
+| Model       | Accuracy | F1 Scoren|
+|-------------|----------|----------|
+| **SVM**     | 0.865    | 0.862    |
+| CNN         | 0.849    | 0.849    |
+| LSTM        | 0.846    | 0.846    |
+| BERT        | 0.760    | 0.740    |
+
+**SVM was deployed** as the most effective model for this use case.
+
+---
+
+## 🧪 Models Evaluated
+
+- ✅ **Support Vector Machine (SVM)**
+- Naive Bayes
+- Logistic Regression
+- Random Forest
+- LSTM
+- CNN
+- BERT
+
+---
+
+## 🔧 Technologies Used
+
+- **Python**
+- **Flask**
+- **Render** (Deployment)
+- **scikit-learn**, **NLTK**, **Pandas**, **Matplotlib**, **Seaborn**
+- **Keras**, **TensorFlow**
+- **Git**, **GitHub**
+
+---
+
+## 📁 Dataset
+
+ 1. [LIAR Dataset](https://sites.cs.ucsb.edu/~william/data/)
+ 2. [FakeNewsNet](https://github.com/KaiDMML/FakeNewsNet)
+ 3. [ISOT Dataset](https://onlineacademiccommunity.uvic.ca/isot/2022/11/27/fake-news-detection-datasets/)
+
+---
+## 📚 References
+
+You can find supporting research materials and paper summaries in the `/references` folder.
+
+---
+
+## 📤 Model Deployment
+
+The trained and selected model (`svm_model.pkl`) is deployed using Flask in the following repository:
+
+🔗 [FakeNewsDetect](https://github.com/NeuroRaptor/FakeNewsDetect)  
+Live at: [https://fakenewsdetect-yhif.onrender.com](https://fakenewsdetect-yhif.onrender.com)
+
+---
+
+
+## 🧪 How to Re-run Experiments
+
+1. **Clone the repository**
 ```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
+git clone https://github.com/NeuroRaptor/Fake-News-Detection.git
+cd Fake-News-Detect
 ```
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
-
-
-## Project Organization
-
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
+2. **Install dependencies**
+```bash
+pip install -r requirements.txt
 ```
 
---------
+3. **Open the notebooks**  
+Run and modify the training notebooks inside `/notebooks` as needed.
+
+---
+
+## 🎓 Capstone Acknowledgment
+
+This project was developed as part of my academic **Capstone Project** under the guidance of **Dr. Hoomera Noor**.
+
+---
+
+## 🤝 Contributions
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 🙋‍♂️ Contact
+
+If you'd like to connect or have feedback:
+
+- **LinkedIn**: [LinkedIn](https://linkedin.com/in/arpitamborkar)
+- **Email**: arpitamborkar1@gmail.com
