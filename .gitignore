@@ -95,3 +95,7 @@ venv/
 
 # exclude data from source control by default
 data/
+
+FakeNewsDetect/ # exclude project directory ... web deployment handled separately
+
+Reports/ # exclude reports directory
